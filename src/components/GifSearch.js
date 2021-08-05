@@ -10,16 +10,12 @@ class GifSearch extends Component {
         event.preventDefault()
         // add in a fetch request
         
-        // const searchValue = event.target.firstElementChild.value
-        
-        this.setState ({
-            search: event.target.firstElementChild.value
-        })
+        const searchValue = this.state.search
+        this.props.fetchGiphys(searchValue)
 
     }
 
     handleChange = (event) => {
-        console.log(event)
         this.setState ({
             search: event.target.value
         })
