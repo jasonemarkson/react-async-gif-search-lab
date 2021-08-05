@@ -7,9 +7,9 @@ function GifList (props) {
         <ul>
             {
             props.gifs.map(element => {
-                <li>
-                    element.images.original.url
-                </li>
+                return (<li>
+                    <img src={element.images.original.url} alt="giphy"/>
+                </li>)
             })
             }
         </ul>
