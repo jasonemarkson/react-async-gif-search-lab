@@ -10,8 +10,7 @@ class GifSearch extends Component {
         event.preventDefault()
         // add in a fetch request
         
-        const searchValue = this.state.search
-        this.props.fetchGiphys(searchValue)
+        this.props.fetchGiphys(this.state.search)
 
     }
 
@@ -25,7 +24,7 @@ class GifSearch extends Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <input type="text" onChange={this.handleChange} value={this.state.search}
+                <input type="text" onChange={event => this.handleChange(event)} value={this.state.search}
                 ></input>
                 <input type="submit"></input>
             </form>

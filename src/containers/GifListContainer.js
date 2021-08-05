@@ -8,13 +8,13 @@ class GifListContainer extends Component {
         gifs: []
     }
 
-    fetchGiphys(searchText = "birds") {
+    fetchGiphys = (searchText = "birds") => {
         const baseURL = `https://api.giphy.com/v1/gifs/search?q=${searchText}&api_key=HSw8GBKxrMNwdQPML3izHMhx6FU4n1uo&rating=g`
 
         fetch(baseURL)
         .then(response => response.json())
-        .then(data => {
-            this.setState({gifs: data.data.slice(0, 3)})
+        .then(({data}) => {
+            this.setState({gifs: data.slice(0, 3)})
         })
     }
 
