@@ -1,14 +1,19 @@
-import React, { Component } from 'react';
-import GifListContainer from './src/containers/GifListContainer';
+import React from 'react';
 
-class GifList extends Component {
+function GifList (props) {
+    // convert from a class component to a functional component
 
-
-    render() {
-        return (
-            <GifListContainer />
-        )
-    }
+    return (
+        <ul>
+            {
+            props.gifs.map(element => {
+                <li>
+                    element.images.original.url
+                </li>
+            })
+            }
+        </ul>
+    )
 }
 
 export default GifList;

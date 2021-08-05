@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
+import GifList from '../components/GifList'
+import GifSearch from '../components/GifSearch'
 
 class GifListContainer extends Component {
+
+    state = {
+        gifs: []
+    }
+
     componentDidMount() {
         const baseURL = `https://api.giphy.com/v1/gifs/search?q=birds&api_key=HSw8GBKxrMNwdQPML3izHMhx6FU4n1uo&rating=g`
 
         fetch(baseURL)
         .then(response => response.json())
         .then(data => {
-            const imgContainer = document.createElement('div')
-            document.body.append(imgContainer)
-
-            data.data.slice(0, 3).forEach(e => {
-                imgContainer.innerHTML += `<img src=${e.embed_url}><br>`
-                }
-            )
+            this.setState({gifs: data.data.slice(0, 3)})
         })
     }
 
     render() {
         return (
-            <button onClick={this.componentDidMount()}
-            >Click Me!</button>
+            <div>
+                <GifSearch />
+                <GifList gifs={this.state.gifs} />
+            </div>
         )
     }
 }
